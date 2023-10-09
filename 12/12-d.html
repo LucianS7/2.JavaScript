@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12d</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .start-button {
+        font-size: 16px;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="
+      changeButton();
+      " class="js-start-button start-button">Start
+    </button>
+
+    <script>
+      function changeButton() {
+        document.querySelector('.js-start-button').innerHTML = 'Loading...'
+        setTimeout(function () {
+          document.querySelector('.js-start-button').innerHTML = 'Finished!'; 
+        }, 1000);
+      };
+    </script>
+  </body>
+</html>

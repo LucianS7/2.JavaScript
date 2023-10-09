@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced Functions</title>
+    
+    <style>
+     
+    </style>
+  </head>
+  <body>
+
+    <button class="js-button">Click</button>
+
+  <script>
+
+    /*
+    greeting();
+
+    function greeting() {
+      console.log('Hello')
+    };
+
+    const function1 = function () {
+      console.log('hello2');
+    };
+
+    const object1 = {
+      num: 2,
+      fun: function () {
+        console.log('hello3');
+      }
+    };
+    object1.fun();
+
+    
+    setTimeout(function () {
+      console.log('timeout');
+      console.log('timeout2');
+    }, 3000);
+
+    console.log ('next line');
+
+    setInterval(function(){
+      console.log('interval');
+    }, 3000);
+
+    console.log('next line 2');
+
+    [
+      'make dinner',
+      'wash dishes',
+      'watch youtube'
+    ].forEach(function(value, index){
+      if (value === 'wash dishes') {
+        return;
+      }
+      console.log(index);
+      console.log(value);
+    });
+
+    */
+
+    const eventListener = () => {
+      console.log('click'); 
+    }
+
+    const eventListener2 = () => {
+      console.log('click2'); 
+    }
+
+    const buttonElement = document.querySelector('.js-button')
+
+    buttonElement.addEventListener('click', eventListener);
+
+    buttonElement.removeEventListener('click', eventListener);
+
+    buttonElement.addEventListener('click', eventListener);
+
+    const array = [1, 2, 3];
+    array.forEach()
+
+
+  </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>9c</title>
+  </head>
+  <body>
+    <input class="js-input" placeholder="Enter text" onkeyup="
+      handleKeyup(event);
+    ">
+
+    <p class="js-keyup-text"></p>
+
+    <script>
+
+      function handleKeyup(event) {
+        if (['Enter', 'Shift', 'Control', 'Alt', 'Tab', 'Capslock', 'Insert', 'Home', 'PageUp', 'PageDown', 'End', 'Escape', 'NumLock', 'PrintScreen', 'ScrollLock', 'Pause'].includes(event.key)) {
+          return;
+
+        } else if (event.key === 'Backspace') {
+          document.querySelector('.js-keyup-text').innerHTML = document.querySelector('.js-keyup-text').innerHTML.slice(0, -1);
+
+        } else if (event.key === 'Delete') {
+          document.querySelector('.js-keyup-text').innerHTML =  '';
+          document.querySelector('.js-input').value = '';
+
+        } else {
+          document.querySelector('.js-keyup-text').innerHTML = document.querySelector('.js-keyup-text').innerHTML + event.key;
+        };
+      };
+
+    </script>
+  </body>
+</html>

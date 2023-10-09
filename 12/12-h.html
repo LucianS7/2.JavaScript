@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .add-message-button, .remove-message-button {
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="
+      addMessage()
+      " class="js-add-message-button add-message-button">Add
+    </button>
+
+    <button onclick="
+      removeMessage()
+      " class="js-remove-message-button remove-message-button">Remove
+    </button>
+
+    <script>
+      let messages = 0;
+
+      function addMessage() {
+        messages++;
+      };
+
+      function removeMessage() {
+        messages--;
+      }
+
+      function appTitleChange() {
+        const title = document.title;
+
+        setInterval(function() {
+          if (document.title === title) {
+            document.title = `${messages} New messages`;
+          } else {
+            document.title = title          
+          };
+        }, 1500);
+      };
+
+      appTitleChange();
+    </script>
+  </body>
+</html>

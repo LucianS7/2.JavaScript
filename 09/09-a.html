@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>9a</title>
+  </head>
+  <body>
+    <button class="js-button">9a</button>
+
+    <div id="foo\bar">This is a div</div>
+
+    <div id="foo:bar">This is the next div</div>
+
+    <script>
+      console.log(document.querySelector('button'));
+
+      console.log('foo\bar');
+
+      console.log('foo\\bar');
+
+      console.log('foo\\\bar');
+
+      console.log('foo\\\\bar');
+
+      console.log(document.querySelector('#foo\\\\bar'));
+
+      console.log('foo:bar');
+
+      console.log('foo\:bar');
+
+      console.log(document.querySelector('#foo\\:bar'));
+    </script>
+  </body>
+</html>

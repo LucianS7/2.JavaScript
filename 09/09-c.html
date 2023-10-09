@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>9c</title>
+  </head>
+  <body>
+    <button class="js-button" onclick="
+      buttonClick ('heads');
+    ">heads</button>
+
+    <button class="js-button" onclick="
+      buttonClick ('tails');
+    ">tails</button>
+
+    <p class="js-guess"></p>
+
+    <script>
+      
+      function buttonClick(playerGuess) {
+        document.querySelector('.js-guess').innerHTML = `You chose: ${playerGuess}`;
+      };
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>9c</title>
+  </head>
+  <body>
+    <input class="js-input">
+    
+    <button class="js-button" onclick="
+      buttonClick ();
+    ">Submit</button>
+
+    <p class="js-submit-text"></p>
+
+    <script>
+      
+      function buttonClick() {
+        document.querySelector('.js-submit-text').innerHTML = `Your name is: ${document.querySelector('.js-input').value}.`;
+      };
+
+    </script>
+  </body>
+</html>

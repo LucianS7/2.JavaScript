@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10d</title>
+    <style>
+      .gaming-button {
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 12px 20px;
+        cursor: pointer;
+      }
+
+      .is-toggled {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="
+      gamingButtonClick()
+    " class="js-gaming-button gaming-button">Gaming</button>
+  
+    <script>
+      function gamingButtonClick() {
+        if (document.querySelector('.js-gaming-button').classList.contains('is-toggled')) {
+          document.querySelector('.js-gaming-button').classList.remove('is-toggled');
+        } else {
+        document.querySelector('.js-gaming-button').classList.add('is-toggled');
+        };
+      };
+    </script>
+  </body>
+</html>

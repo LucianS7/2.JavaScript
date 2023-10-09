@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="/styles/project2-var1.css">
+  </head>
+
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <p class="game-description"> 
+      Game starts by just Tap on box<br>
+      First Player starts as <b>Player X</b> and Second Player as <b>Player 0</b>
+    </p>
+    <p class="score">
+      <b class="js-playerX-wins win-notification">Player X wins: 0</b>
+      <b class="js-player0-wins win-notification">Player 0 wins: 0</b>
+    </p>
+    <br>
+    <div class="main">
+      <div class="grid">
+        <button id="00" class="js-game-cell game-cell"></button>
+        <button id="01" class="js-game-cell game-cell"></button>
+        <button id="02" class="js-game-cell game-cell"></button>
+        <button id="10" class="js-game-cell game-cell"></button>
+        <button id="11" class="js-game-cell game-cell"></button>
+        <button id="12" class="js-game-cell game-cell"></button>
+        <button id="20" class="js-game-cell game-cell"></button>
+        <button id="21" class="js-game-cell game-cell"></button>
+        <button id="22" class="js-game-cell game-cell"></button>
+      </div>
+      <div>
+        <button class="js-new-game-button new-game-button">New game</button>
+        <button class="js-reset-score-button reset-score-button">Reset score</button> 
+      </div>
+    </div>
+    <br>
+ 
+    <p class="js-result-notification result-notification"></p>
+
+  <script src="/scripts/project2-var1.js"></script>
+  </body>
+</html>

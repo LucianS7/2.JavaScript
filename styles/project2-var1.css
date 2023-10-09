@@ -1,0 +1,101 @@
+body {
+  font-family: Arial;
+}
+
+.win-notification {
+  margin-right: 10px;
+}
+
+h1 {
+  box-sizing: border-box;
+  color: red;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.game-description, .score, .result-notification {
+  font-size: 16px;
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 120px 120px 120px;
+}
+.game-cell, .game-cell:disabled {
+  box-sizing: border-box;
+  background-color: white;
+  border: none;
+  width: 120px;
+  height: 120px;
+  font-size: 50px;
+  margin: -2.1px;
+  cursor: pointer;
+}
+
+.game-cell:focus {
+  background-color: rgb(245, 245, 245);
+}
+
+[id='00'] {
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+[id='01'] {
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+[id='02'] {
+  border-bottom: 1px solid gray;
+}
+
+[id='10'] {
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+[id='11'] {
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+[id='12'] {
+  border-bottom: 1px solid gray;
+}
+
+[id='20'] {
+  border-right: 1px solid gray;
+}
+
+[id='21'] {
+  border-right: 1px solid gray;
+}
+
+.x-cell {
+  color: red;
+}
+
+.new-game-button, .reset-score-button {
+  font-size: 16px;
+  text-wrap: nowrap;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.result-notification {
+  font-weight: bold;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="/styles/project2-var3.css">
+  </head>
+
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <p id="game-description"> 
+      Game starts by just Tap on box<br>
+      First Player starts as <b>Player X</b> and Second Player as <b>Player 0</b>
+    </p>
+    <p id="score">
+      <b id="playerX-wins">Player X wins: 0</b>
+			<b>|</b>
+      <b id="player0-wins">Player 0 wins: 0</b>
+    </p>
+    <br>
+	<table id="game-table">
+		<tbody>
+			<tr>
+				<td id="00">
+					<button data-row="0" data-column="0"></button>
+				</td>
+				<td id="01">
+					<button data-row="0" data-column="1"></button>
+				</td>
+				<td id="02">
+					<button data-row="0" data-column="2"></button>
+				</td>
+			</tr>
+			<tr>
+				<td id="10">
+					<button data-row="1" data-column="0"></button>
+				</td>
+				<td id="11">
+					<button data-row="1" data-column="1"></button>
+				</td>
+				<td id="12">
+					<button data-row="1" data-column="2"></button>
+				</td>
+			</tr>
+			<tr>
+				<td id="20">
+					<button data-row="2" data-column="0"></button>
+				</td>
+				<td id="21">
+					<button data-row="2" data-column="1"></button>
+				</td>
+				<td id="22">
+					<button data-row="2" data-column="2"></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div id="buttons">
+		<button id="new-game-button">New game</button>
+		<button id="reset-score-button">Reset score</button> 
+  </div>
+	<br>
+	<p id="result-notification"></p>
+<script src="/scripts/project2-var3.js"></script>
+</html>

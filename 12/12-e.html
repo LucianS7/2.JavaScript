@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12e</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .addToCart-button {
+        font-size: 16px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="
+      addToCartButton();
+      " class="js-addToCart-button addToCart-button">Add to cart
+    </button>
+
+    <p class="js-added-paragraf"></p>
+
+    <script>
+      function addToCartButton() {
+        document.querySelector('.js-added-paragraf').innerHTML = 'Added'
+        setTimeout(function () {
+          document.querySelector('.js-added-paragraf').innerHTML = ''; 
+        }, 2000);
+      };
+    </script>
+  </body>
+</html>

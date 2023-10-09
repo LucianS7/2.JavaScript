@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .add-message-button, .remove-message-button {
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="
+      addMessage()
+      " class="js-add-message-button add-message-button">Add
+    </button>
+
+    <button onclick="
+      removeMessage()
+      " class="js-remove-message-button remove-message-button">Remove
+    </button>
+
+    <script>
+      const title = document.title;
+      let messages = 0;
+      let intervalId;
+      let isDisplayingNotification;
+
+      function addMessage() {
+        messages++;
+        displayNotification();
+      };
+
+      function removeMessage() {
+        if (messages > 0) {
+          messages--;
+          if (messages === 0) {
+            stopNotification();
+          };
+        };
+      };
+
+      function displayNotification() {
+        if (isDisplayingNotification) {
+          return;
+        };
+        
+        isDisplayingNotification = true;
+
+        intervalId = setInterval(function() {
+          if (document.title === title) {
+            document.title = `${messages} New messages`;
+          } else {
+            document.title = title          
+          };
+        }, 1500);
+      };
+
+      function stopNotification() {
+        isDisplayingNotification = false;
+
+        clearInterval(intervalId);
+        document.title = title;
+      };
+    </script>
+  </body>
+</html>

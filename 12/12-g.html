@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    
+    <style>
+      body {
+        font-family: Arial;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      function appTitleChange() {
+        const title = document.title;
+
+        setInterval(function() {
+          if (document.title === title) {
+            document.title = '(2) New messages';
+          } else {
+            document.title = title          
+          };
+        }, 1500);
+      };
+
+      appTitleChange();
+    </script>
+  </body>
+</html>

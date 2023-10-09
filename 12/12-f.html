@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12f</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .addToCart-button {
+        font-size: 16px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="
+      addToCartButton();
+      " class="js-addToCart-button addToCart-button">Add to cart
+    </button>
+
+    <p class="js-added-paragraf"></p>
+
+    <script>
+      let timeoutId;
+
+      function addToCartButton() {
+        const messageElement = document.querySelector('.js-added-paragraf');
+        messageElement.innerHTML = 'Added';
+        
+        clearTimeout(timeoutId);
+          
+        timeoutId = setTimeout(function () {
+          document.querySelector('.js-added-paragraf').innerHTML = ''; 
+        }, 2000);
+      };
+    </script>
+  </body>
+</html>
