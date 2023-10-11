@@ -656,5 +656,38 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: "ab1234e5-5342-403h-b7cd-55fde044a987",
+    image: "images/products/TP-Link-Router-Archer-MR500.jpg",
+    name: "TP-Link Router Archer MR500",
+    rating: {
+      stars: 5,
+      count: 120
+    },
+    priceCents: 8999,
+    keywords: [
+      "router",
+      "wi-fi",
+      "network",
+      "lan"
+    ]
+  },
+  {
+    id: "cd1234e5-5452-412h-b7cd-77fde034cf56",
+    image: "images/products/TP-Link-light-bulb.jpg",
+    name: "TP-Link light bulb",
+    rating: {
+      stars: 4.5,
+      count: 21
+    },
+    priceCents: 1400,
+    keywords: [
+      "light",
+      "bulb",
+      "led",
+      "wi-fi",
+      "socket"
+    ]
   }
 ];
