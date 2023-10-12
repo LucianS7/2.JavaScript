@@ -32,6 +32,5 @@ export function addToCart (productId, productName) {
 }
 
 export function removeFromCart(productId) {
-  console.log(productId);
   cart = cart.filter(cartProduct => productId !== cartProduct.productId);
 }
