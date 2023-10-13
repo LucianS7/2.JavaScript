@@ -43,5 +43,45 @@ export function addToCart (productId, productName) {
 export function removeFromCart(productId) {
   cart = cart.filter(cartProduct => productId !== cartProduct.productId);
 
+  const container = document.querySelector(`.js-cart-item-container-${productId}`);
+  container.remove();
+  
+  document.querySelector('.js-return-to-home-link-cart-quantity')
+    .innerHTML = `${calculateCartQuantity()} items`;
+
   saveToStorage();
+}
+
+export function calculateCartQuantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((product) => {
+    cartQuantity += product.quantity;
+  });
+  
+  return cartQuantity;
+}
+
+export function updateLinkHandler(productId) {
+  document.querySelector(`.js-cart-item-container-${productId}`)
+    .classList.add('is-editing-quantity');
+}
+
+export function updateCartQuantity(productId, newQuantity) {
+  document.querySelector(`.js-cart-item-container-${productId}`)
+    .classList.remove('is-editing-quantity');
+
+  cart.forEach((product) => {
+    if (product.productId === productId) {
+      product.quantity = newQuantity;
+    }
+  });
+
+  document.querySelector(`.js-quantity-label-${productId}`)
+    .innerHTML = newQuantity;
+
+  document.querySelector('.js-return-to-home-link-cart-quantity')
+    .innerHTML = `${calculateCartQuantity()} items`;
+
+  saveToStorage()
 }
