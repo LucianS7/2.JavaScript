@@ -1,6 +1,7 @@
 import {cart, removeFromCart, calculateCartQuantity, updateSaveLinkHandler, updateLinkHandler} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
+import {placeNewOrder} from '../data/orderHistory.js';
 
 let cartSummaryHTML = '';
 
@@ -45,6 +46,9 @@ document.querySelectorAll('.delivery-option input[type="radio"]')
       modifyItemDeliveryDate(selectorName);
     })
   });
+
+document.querySelector('.js-place-order-button')
+  .addEventListener('click', placeOrderButtonHandler);
 
 function renderCheckoutCart () {
   cart.forEach((cartItem) => {
@@ -212,3 +216,8 @@ function modifyItemDeliveryDate(selectorName) {
   checkedSelector.closest('.cart-item-container').querySelector('.delivery-date').textContent = `Delivery date: ${deliveryDate}`;
 }
 
+function placeOrderButtonHandler() {
+  const totalOrderPrice = document.querySelector('.js-total-row').textContent.trim();
+  const deliveryDate = document.querySelector('.delivery-date').textContent.split(':')[1].trim();
+  placeNewOrder(cart, totalOrderPrice, deliveryDate);
+}
