@@ -220,4 +220,7 @@ function placeOrderButtonHandler() {
   const totalOrderPrice = document.querySelector('.js-total-row').textContent.trim();
   const deliveryDate = document.querySelector('.delivery-date').textContent.split(':')[1].trim();
   placeNewOrder(cart, totalOrderPrice, deliveryDate);
+  cart.forEach ((product) => {
+    removeFromCart(product.productId)
+  })
 }

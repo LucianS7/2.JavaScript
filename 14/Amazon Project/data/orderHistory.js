@@ -24,6 +24,6 @@ export function saveToStorage() {
 }
 
 
-export function removeFromStorage () {
+function removeFromStorage () {
   localStorage.removeItem('order-history')
 }

@@ -1,8 +1,7 @@
 import {products} from '../data/products.js';
-import {orderHistory, removeFromStorage} from '../data/orderHistory.js';
+import {orderHistory} from '../data/orderHistory.js';
 
 renderOrderHistory();
-
 
 function renderOrderHistory() {
   let orderHistoryHTML = ''
@@ -80,6 +79,6 @@ function renderOrderHistory() {
     orderHistoryHTML += curentOrderHTML;
   });
 
-    document.querySelector('.js-order-grid').innerHTML = orderHistoryHTML;
+  document.querySelector('.js-order-grid').innerHTML = orderHistoryHTML;
 }
 
