@@ -14,7 +14,7 @@ function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export function addToCart (productId, productName) {
+export function addToCart (productId) {
   const productQuantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
 
   let matchingItem;
@@ -30,7 +30,6 @@ export function addToCart (productId, productName) {
   } else {
     cart.push({
       productId: productId,
-      productName: productName,
       quantity: productQuantity,
     });
   };

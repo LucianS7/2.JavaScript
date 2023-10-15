@@ -106,7 +106,7 @@ function renderCheckoutCart () {
               name="delivery-option-${matchingProduct.id}">
             <div>
               <div class="delivery-option-date">
-                Tuesday, June 21
+                Tuesday, October 24
               </div>
               <div class="delivery-option-price">
                 FREE Shipping
@@ -119,7 +119,7 @@ function renderCheckoutCart () {
               name="delivery-option-${matchingProduct.id}">
             <div>
               <div class="delivery-option-date">
-                Wednesday, June 15
+                Wednesday, October 18
               </div>
               <div class="delivery-option-price">
                 $4.99 - Shipping
@@ -132,7 +132,7 @@ function renderCheckoutCart () {
               name="delivery-option-${matchingProduct.id}">
             <div>
               <div class="delivery-option-date">
-                Monday, June 13
+                Monday, October 16
               </div>
               <div class="delivery-option-price">
                 $9.99 - Shipping
@@ -217,10 +217,35 @@ function modifyItemDeliveryDate(selectorName) {
 }
 
 function placeOrderButtonHandler() {
-  const totalOrderPrice = document.querySelector('.js-total-row').textContent.trim();
-  const deliveryDate = document.querySelector('.delivery-date').textContent.split(':')[1].trim();
-  placeNewOrder(cart, totalOrderPrice, deliveryDate);
-  cart.forEach ((product) => {
-    removeFromCart(product.productId)
-  })
+  if (cart) {
+    const orderDate = new Date().toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric"
+    });
+    const orderId = `${parseInt(Math.random()*10**12)}-${(Date.now()/10).toFixed(0)}`;
+    const totalOrderPrice = document.querySelector('.js-total-row').textContent.trim();
+    let order = {
+      orderId: orderId,
+      orderDate: orderDate,
+      orderedProducts: [],
+      orderPrice: totalOrderPrice,
+    }
+    
+    cart.forEach((cartProduct) => {
+      const selectedDeliveryOption = document.querySelector(`input[type="radio"]:checked[name="delivery-option-${cartProduct.productId}"]`);
+      const deliveryDate = selectedDeliveryOption.closest('.delivery-option').querySelector('.delivery-option-date').textContent.trim();
+      console.log(deliveryDate)
+      order.orderedProducts.push({
+        productId: cartProduct.productId,
+        quantity: cartProduct.quantity,
+        deliveryDate: deliveryDate
+      }) 
+    })
+
+    placeNewOrder(order);
+
+    cart.forEach ((cartProduct) => {
+      removeFromCart(cartProduct.productId);
+    })
+  }
 }

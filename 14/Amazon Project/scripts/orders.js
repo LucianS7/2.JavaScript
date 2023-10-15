@@ -3,18 +3,28 @@ import {orderHistory} from '../data/orderHistory.js';
 
 renderOrderHistory();
 
+const trackButtons = document.querySelectorAll('.js-track-package-button');
+trackButtons.forEach((button) => {
+  button.addEventListener ('click', () => {
+    trackButtonHandler(button);
+  })
+});
+
+
 function renderOrderHistory() {
   let orderHistoryHTML = ''
 
   orderHistory.forEach((order) => {
     let currentOrderCartProductsHTML = ''
 
-    order.orderedProducts.forEach((cartProduct) => {
+    order.orderedProducts.forEach((orderedProduct) => {
       let matchingProduct;
 
       products.forEach ((product) => {
-        if (product.id === cartProduct.productId) {
+        if (product.id === orderedProduct.productId) {
           matchingProduct = product;
+          matchingProduct.quantity = orderedProduct.quantity;
+          matchingProduct.deliveryDate = orderedProduct.deliveryDate;
         }
       })
 
@@ -28,10 +38,10 @@ function renderOrderHistory() {
           ${matchingProduct.name}
         </div>
         <div class="product-delivery-date">
-          Arriving on: ${order.orderDeliveryDate}
+          Arriving on: ${matchingProduct.deliveryDate}
         </div>
         <div class="product-quantity">
-          Quantity: ${cartProduct.quantity}
+          Quantity: ${matchingProduct.quantity}
         </div>
         <button class="buy-again-button button-primary">
           <img class="buy-again-icon" src="images/icons/buy-again.png">
@@ -40,18 +50,18 @@ function renderOrderHistory() {
       </div>
 
       <div class="product-actions">
-        <a href="tracking.html">
-          <button class="track-package-button button-secondary">
+        <!-- <a href="tracking.html"> -->
+          <button class="track-package-button js-track-package-button button-secondary" data-product-id="${matchingProduct.id}">
             Track package
           </button>
-        </a>
+        <!-- </a> -->
       </div>
       ` 
       currentOrderCartProductsHTML += currentOrderCurrentCartProductHTML;
     });
 
     const curentOrderHTML = `
-    <div class="order-container">
+    <div class="order-container js-order-container">
               
       <div class="order-header">
         <div class="order-header-left-section">
@@ -67,7 +77,7 @@ function renderOrderHistory() {
 
         <div class="order-header-right-section">
           <div class="order-header-label">Order ID:</div>
-          <div>${order.orderId}</div>
+          <div class="js-order-id">${order.orderId}</div>
         </div>
       </div>
 
@@ -82,3 +92,11 @@ function renderOrderHistory() {
   document.querySelector('.js-order-grid').innerHTML = orderHistoryHTML;
 }
 
+
+function trackButtonHandler(clickedButton) {
+  const productId = clickedButton.dataset.productId;
+  const orderId = clickedButton.closest('.js-order-container')
+    .querySelector('.js-order-id').textContent.trim();
+
+  window.location.href = `tracking.html?productId=${productId}&orderId=${orderId}`
+}
