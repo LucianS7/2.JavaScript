@@ -3,13 +3,6 @@ import {orderHistory} from '../data/orderHistory.js';
 
 renderOrderHistory();
 
-const trackButtons = document.querySelectorAll('.js-track-package-button');
-trackButtons.forEach((button) => {
-  button.addEventListener ('click', () => {
-    trackButtonHandler(button);
-  })
-});
-
 
 function renderOrderHistory() {
   let orderHistoryHTML = ''
@@ -100,3 +93,10 @@ function trackButtonHandler(clickedButton) {
 
   window.location.href = `tracking.html?productId=${productId}&orderId=${orderId}`
 }
+
+document.querySelectorAll('.js-track-package-button')
+  .forEach((button) => {
+    button.addEventListener ('click', () => {
+      trackButtonHandler(button);
+    })
+  });

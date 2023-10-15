@@ -2,10 +2,6 @@ import { orderHistory } from "../data/orderHistory.js";
 import { products } from "../data/products.js";
 
 
-const productId = getUrlParameters('productId');
-const orderId = getUrlParameters('orderId');
-
-
 renderProductTracking ();
 
 
@@ -19,6 +15,8 @@ function renderProductTracking() {
   let productTrackingHTML = '';
   let matchingOrder;
   let matchingProduct;
+  const productId = getUrlParameters('productId');
+  const orderId = getUrlParameters('orderId');
 
   products.forEach((product) => {
     if (product.id === productId) {

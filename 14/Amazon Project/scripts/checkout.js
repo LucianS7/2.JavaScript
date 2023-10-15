@@ -3,54 +3,14 @@ import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 import {placeNewOrder} from '../data/orderHistory.js';
 
-let cartSummaryHTML = '';
+
 
 renderCheckoutCart();
 
-document.querySelectorAll('.js-delete-link')
-  .forEach((link) => {
-    link.addEventListener('click', () => {
-      const productId = link.dataset.productId;
-      removeFromCart(productId);
-      updatePaymentSummary();
-    });
-  });
-
-document.querySelectorAll('.js-update-quantity-link')
-  .forEach((link) => {
-    link.addEventListener('click', () => {
-      const productId = link.dataset.productId;
-      updateLinkHandler(productId);
-    });
-  });
-
-document.querySelectorAll('.js-save-quantity-link')
-  .forEach((link) => {
-    link.addEventListener('click', () => {
-      const productId = link.dataset.productId;
-      const newQuantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value)
-      if (0<= newQuantity && newQuantity < 1000) {
-        updateSaveLinkHandler(productId, newQuantity);
-        updatePaymentSummary();
-      } else {
-        nonValidQuantityNotification();
-      }
-    });
-  });
-
-document.querySelectorAll('.delivery-option input[type="radio"]')
-  .forEach ((selector) => {
-    const selectorName = selector.name;
-    selector.addEventListener('change', () => {
-      updatePaymentSummary();
-      modifyItemDeliveryDate(selectorName);
-    })
-  });
-
-document.querySelector('.js-place-order-button')
-  .addEventListener('click', placeOrderButtonHandler);
 
 function renderCheckoutCart () {
+  let cartSummaryHTML = '';
+  
   cart.forEach((cartItem) => {
     const productId = cartItem.productId;
   
@@ -216,6 +176,7 @@ function modifyItemDeliveryDate(selectorName) {
   checkedSelector.closest('.cart-item-container').querySelector('.delivery-date').textContent = `Delivery date: ${deliveryDate}`;
 }
 
+
 function placeOrderButtonHandler() {
   if (cart) {
     const orderDate = new Date().toLocaleDateString("en-US", {
@@ -249,3 +210,51 @@ function placeOrderButtonHandler() {
     })
   }
 }
+
+
+document.querySelectorAll('.delivery-option input[type="radio"]')
+  .forEach ((selector) => {
+    const selectorName = selector.name;
+    selector.addEventListener('change', () => {
+      updatePaymentSummary();
+      modifyItemDeliveryDate(selectorName);
+    })
+  });
+
+
+document.querySelectorAll('.js-delete-link')
+  .forEach((link) => {
+    link.addEventListener('click', () => {
+      const productId = link.dataset.productId;
+      removeFromCart(productId);
+      updatePaymentSummary();
+    });
+  });
+
+
+document.querySelectorAll('.js-update-quantity-link')
+  .forEach((link) => {
+    link.addEventListener('click', () => {
+      const productId = link.dataset.productId;
+      updateLinkHandler(productId);
+    });
+  });
+
+  
+document.querySelectorAll('.js-save-quantity-link')
+  .forEach((link) => {
+    link.addEventListener('click', () => {
+      const productId = link.dataset.productId;
+      const newQuantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value)
+      if (0<= newQuantity && newQuantity < 1000) {
+        updateSaveLinkHandler(productId, newQuantity);
+        updatePaymentSummary();
+      } else {
+        nonValidQuantityNotification();
+      }
+    });
+  });
+
+
+document.querySelector('.js-place-order-button')
+  .addEventListener('click', placeOrderButtonHandler);
