@@ -2,12 +2,12 @@ import {addToCart, calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 
-renderProducts();
+renderProducts(products);
 
 updateCartQuantityIcon();
 
 
-function renderProducts() {
+function renderProducts(products) {
   let productsHTML = '';
 
   products.forEach((product) => {
@@ -64,6 +64,9 @@ function renderProducts() {
     `
   });
   document.querySelector('.js-products-grid').innerHTML = productsHTML;
+  setupAddtoCartButtons();
+  setupSearchBar();
+  setupSearchButton();
 }
 
 
@@ -90,15 +93,73 @@ function addAddedMessage(productId) {
 }
 
 
-document.querySelectorAll('.js-add-to-cart')
-.forEach ((button) => {
-  button.addEventListener('click', () => {
-    const productId = button.dataset.productId;
+function searchForProduct(productName) {
+  const searchResult = [];
+  products.forEach((product) => {
+    if (product.name.toLowerCase().includes(productName)) {
+      searchResult.push(product);
+      console.log(product.name)
+    }
+  })
+  return searchResult
+}
 
-    addAddedMessage(productId);
 
-    addToCart(productId);
-    
-    updateCartQuantityIcon();
+function renderNoProductsFound () {
+  const noProductsFound = document.createElement('div');
+  noProductsFound.textContent = 'No products found.';
+  noProductsFound.classList.add('no-search-result-text');
+
+  const productsGrid = document.querySelector('.js-products-grid');
+  productsGrid.remove();
+
+  document.querySelector('.js-main').appendChild(noProductsFound);
+  setupAddtoCartButtons();
+  setupSearchBar();
+  setupSearchButton();
+}
+
+
+function searchBarHandler() {
+  const productName = document.querySelector('.js-search-bar').value.trim().toLowerCase()
+  if (productName) {
+    const searchResult = searchForProduct(productName);
+    if (searchResult.length) {
+      renderProducts(searchResult);
+    } else {
+      renderNoProductsFound();
+    }
+  }
+}
+
+
+function setupAddtoCartButtons () {
+  document.querySelectorAll('.js-add-to-cart')
+  .forEach ((button) => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+
+      addAddedMessage(productId);
+
+      addToCart(productId);
+      
+      updateCartQuantityIcon();
+    });
   });
-});
+}
+
+
+function setupSearchButton() {
+  document.querySelector('.js-search-button')
+    .addEventListener('click', searchBarHandler)
+}
+
+
+function setupSearchBar() {
+  document.querySelector('.js-search-bar')
+  .addEventListener ('keyup', (event) => {
+    if (event.key === 'Enter') {
+      searchBarHandler()
+    } 
+  })
+}

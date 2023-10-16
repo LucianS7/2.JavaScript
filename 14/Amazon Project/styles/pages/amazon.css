@@ -158,3 +158,13 @@
   padding: 8px;
   border-radius: 50px;
 }
+
+
+.no-search-result-text {
+  color: chocolate;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 20px;
+}
