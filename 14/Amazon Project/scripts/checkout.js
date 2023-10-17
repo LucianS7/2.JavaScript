@@ -127,7 +127,7 @@ function updatePaymentSummary() {
   cart.forEach((cartItem) => {
     const productId = cartItem.productId;
     const productQuantity = cartItem.quantity;
-    
+   
     // calculate price of cart products
     products.forEach((product) => {
       if (product.id === productId) {
