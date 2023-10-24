@@ -22,11 +22,21 @@ notes = [
       id:2,
       body: "Note 2"
     },
+    {
+      id:3,
+      body: "Note 3"
+    },
+    {
+      id:4,
+      body: "Note 4"
+    }
 
 ]
 
-const currentNoteId = (false && 3) || "";
+currentId = 4
 
-console.log(currentNoteId)
+const newNotes = [...notes.filter(note =>note.id === currentId), ...notes.filter(note =>note.id !== currentId)]
+
+console.log(newNotes)
 
 
